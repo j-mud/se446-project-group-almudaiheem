@@ -20,3 +20,9 @@ mapred streaming \
 -reducer 'python3 reducer_sum.py' \
 -input /data/chicago_crimes.csv \
 -output /user/fsad/project/m1/task4
+
+2001 467301
+2002 205267
+2023 81461
+2025 12710
+2022 4678
