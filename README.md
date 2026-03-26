@@ -86,7 +86,7 @@ mapred streaming \
 
 ## Task 4: Year Trend Analysis
 
-Analyze how the total number of crimes changed over the years by extracting the year from the `Date` column (index 2) and counting crimes per year. This is exactly what Task 4 asks for in the milestone. :contentReference[oaicite:2]{index=2}
+Analyze how the total number of crimes changed over the years by extracting the year from the `Date` column (index 2) and counting crimes per year. 
 
 **Mapper:** `mapper_task4.py`  
 **Reducer:** `reducer_sum.py`
