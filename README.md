@@ -86,8 +86,10 @@ mapred streaming \
 
 ## Task 4: Year Trend Analysis
 
-### Research Question
-How has the total number of crimes changed over the years?
+Analyze how the total number of crimes changed over the years by extracting the year from the `Date` column (index 2) and counting crimes per year. This is exactly what Task 4 asks for in the milestone. :contentReference[oaicite:2]{index=2}
+
+**Mapper:** `mapper_task4.py`  
+**Reducer:** `reducer_sum.py`
 
 ### Command
 ```bash
@@ -99,17 +101,17 @@ mapred streaming \
 -output /user/fsad/project/m1/task4
 ```
 
-### Top 5 Results
+### Top 5 years by crime count
 ```text
-2001 467301
-2002 205267
-2023 81461
-2025 12710
-2022 4678
+2001    467301
+2002    205267
+2023    81461
+2025    12710
+2022    4678
 ```
 
 ### Interpretation
-Crime counts are highest in 2001 and 2002, while later years are much lower, showing that the dataset coverage or reporting volume varies significantly across years.
+Crime counts are highest in 2001 and 2002, while later years are much lower, suggesting the dataset coverage or reporting volume varies significantly across years.
 
 ### Execution Logs
 ```text
@@ -144,7 +146,6 @@ See https://ubuntu.com/esm or run: sudo pro status
 
 New release '24.04.4 LTS' available.
 Run 'do-release-upgrade' to upgrade to it.
-
 
 *** System restart required ***
 Last login: Thu Mar 26 19:25:01 2026 from 50.60.101.184
@@ -239,40 +240,7 @@ packageJobJar: [] [/opt/hadoop-3.4.1/share/hadoop/tools/lib/hadoop-streaming-3.4
         File Output Format Counters
                 Bytes Written=245
 2026-03-26 20:15:47,792 INFO streaming.StreamJob: Output directory: /user/fsad/project/m1/task4
-fsad@master-node:~$ hdfs dfs -cat /user/fsad/project/m1/task4/part-00000
-hdfs dfs -cat /user/fsad/project/m1/task4/part-00000 | sort -k2 -rn | head -5
-2001    467301
-2002    205267
-2003    985
-2004    915
-2005    1031
-2006    796
-2007    762
-2008    1010
-2009    910
-2010    695
-2011    770
-2012    800
-2013    714
-2014    825
-2015    1105
-2016    1339
-2017    1387
-2018    1327
-2019    1174
-2020    1832
-2021    2399
-2022    4678
-2023    81461
-2024    880
-2025    12710
-2001    467301
-2002    205267
-2023    81461
-2025    12710
-2022    4678```
-
----
+```
 
 ## Task 5: Arrest Rate Analysis
 
