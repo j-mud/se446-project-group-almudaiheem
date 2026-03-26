@@ -1,4 +1,4 @@
-# se446-project-group-almudaiheem
+# SE446-Project-Group-Almudaiheem
 Repository for SE446 (Intro to Big Data) Term project.
 
 ## Task 4: Year Trend Analysis
