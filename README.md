@@ -10,7 +10,7 @@ SE446-Project-Group-Almudaiheem
 
 | Name | Student ID | Role / Task |
 |---|---:|---|
-| Aljohara | ID | Task 1 — Repo Setup, Shared Reducer, README |
+| Aljohara Almudaiheem| 231383 | Task 1 — Repo Setup, Shared Reducer, README |
 | Laura | ID | Task 2 — Crime Type Distribution |
 | Joud | ID | Task 3 — Location Hotspots |
 | Fjr Sad | 231722 | Task 4 — Year Trend Analysis |
@@ -281,8 +281,8 @@ true  XXXXX]
 
 | Member | Contribution |
 |---|---|
-| Fjr Sad | Wrote `mapper_task4.py`, opened PR, merged Task 4, tested locally, executed Task 4 on the cluster, and added Task 4 results. |
-| [Member 2 Name] | Wrote `mapper_task2.py`, tested and executed Task 2, added Task 2 results. |
-| [Member 3 Name] | Wrote `mapper_task3.py`, tested and executed Task 3, added Task 3 results. |
-| [Member 4 Name] | Wrote `mapper_task5.py`, tested and executed Task 5, added Task 5 results. |
-| [Leader Name] | Created repository, added collaborators, set folder structure, committed shared `reducer_sum.py`. |
+| Aljohara Almudaiheem| Created the repository structure, added the shared reducer_sum.py, and handled Task 1 setup requirements. |
+| Laura | Implemented mapper_task2.py for crime type distribution and contributed Task 2 results. |
+| Joud | Implemented mapper_task3.py for location hotspot analysis and contributed Task 3 results. |
+| Fjr Sad | Implemented mapper_task4.py for year trend analysis, tested it locally, ran it on the Hadoop cluster, collected the output and top 5 results, and documented Task 4 in the README. |
+| Layan Alshammari| Implemented mapper_task5.py for arrest rate analysis and contributed Task 5 results. |
