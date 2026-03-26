@@ -2,7 +2,9 @@
 Repository for SE446 (Intro to Big Data) Term project.
 
 Task 4: Year Trend Analysis
+
 Goal:
+
 Analyze how the total number of crimes changed over the years by extracting the year from the Date column (index 2) and counting crimes per year.
 
 Mapper:
