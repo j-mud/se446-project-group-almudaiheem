@@ -14,7 +14,7 @@ SE446-Project-Group-Almudaiheem
 | [Member 2 Name] | [ID] | Task 2 — Crime Type Distribution |
 | [Member 3 Name] | [ID] | Task 3 — Location Hotspots |
 | [Member 4 Name] | [ID] | Task 5 — Arrest Rate |
-| [Member 1 / Leader Name] | [ID] | Task 1 — Repo Setup, Shared Reducer |
+| [Member 1 Name] | [ID] | Task 1 — Repo Setup, Shared Reducer |
 
 ## Summary
 
