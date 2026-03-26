@@ -16,7 +16,7 @@ se446-project-group-almudaiheem
 | [Member 4 Name] | [ID] | Task 5 — Arrest Rate |
 | [Member 1 / Leader Name] | [ID] | Task 1 — Repo Setup, Shared Reducer |
 
-## Executive Summary
+## Summary
 
 This project uses Hadoop MapReduce to analyze the Chicago crime dataset and answer key questions about crime patterns. We implemented separate mappers for crime type distribution, location hotspots, year-based crime trends, and arrest analysis, while reusing a shared reducer to aggregate counts.
 
