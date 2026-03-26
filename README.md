@@ -109,7 +109,7 @@ mapred streaming \
 ```
 
 ### Interpretation
-Crime counts are highest in 2001 and 2002, while later years are much lower, suggesting the dataset coverage or reporting volume varies significantly across years.
+Crime counts are highest in 2001 and 2002, but later years are much lower, showing that the dataset coverage or reporting varies significantly across years.
 
 ### Execution Logs
 ```text
