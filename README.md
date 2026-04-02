@@ -11,8 +11,8 @@ SE446-Project-Group-Almudaiheem
 | Name | Student ID | Role / Task |
 |---|---:|---|
 | Aljohara Almudaiheem| 231383 | Task 1 — Repo Setup, Shared Reducer, README |
-| Laura | ID | Task 2 — Crime Type Distribution |
-| Joud | ID | Task 3 — Location Hotspots |
+| Laura Alsubaie | 231747 | Task 2 — Crime Type Distribution |
+| Joud Alhozami | 231682 | Task 3 — Location Hotspots |
 | Fjr Sad | 231722 | Task 4 — Year Trend Analysis |
 | Layan Al Shammari | 231822 | Task 5 — Arrest Rate |
 
