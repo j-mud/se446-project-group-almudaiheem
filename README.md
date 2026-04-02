@@ -41,11 +41,11 @@ mapred streaming \
 
 ### Top 5 Results
 ```text
-[Paste top 5 lines from task 2 output here]
+[paste top 5 lines from task 2 output hereeeee]
 ```
 
 ### Interpretation
-[Write one sentence interpreting Task 2 results.]
+[write one sentence about task 2 results]
 
 ### Execution Logs
 ```text
@@ -71,15 +71,15 @@ mapred streaming \
 
 ### Top 5 Results
 ```text
-[Paste top 5 lines from task 3 output here]
+[paste top 5 lines from task 3 output here]
 ```
 
 ### Interpretation
-[Write one sentence interpreting Task 3 results.]
+[Write Task 3 results]
 
 ### Execution Logs
 ```text
-[Paste full terminal output for Task 3 here]
+[Paste your full terminal output for Task 3 here plzzz]
 ```
 
 ---
