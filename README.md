@@ -16,6 +16,9 @@ SE446-Project-Group-Almudaiheem
 | Fjr Sad | 231722 | Task 4 — Year Trend Analysis |
 | Layan Al Shammari | 231822 | Task 5 — Arrest Rate |
 
+### NOTE
+There is an error when adding team members to the team on the AssessX website. You can find the team’s information in the table above and in the collaborators section of this repository.
+
 ## Summary
 
 This project uses Hadoop MapReduce to analyze the Chicago crime dataset and answer key questions about crime patterns. We implemented separate mappers for crime type distribution, location hotspots, year-based crime trends, and arrest analysis, while reusing a shared reducer to aggregate counts.
