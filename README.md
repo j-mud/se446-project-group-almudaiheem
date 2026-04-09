@@ -74,15 +74,32 @@ mapred streaming \
 
 ### Top 5 Results
 ```text
-[paste top 5 lines from task 3 output here]
+RESIDENCE	7
+STREET	6
+COMMERCIAL	3
+APARTMENT	3
+SIDEWALK	2
 ```
 
 ### Interpretation
-[Write Task 3 results]
+The results shows us that the most common crimes occur in residence locations followed by street and commercial areas, indicating that crime is concentrated in residential and public environments.
 
 ### Execution Logs
 ```text
-[Paste your full terminal output for Task 3 here plzzz]
+joud@Jouds-MBP-2 se446-project-group-almudaiheem % cat chicago_crimes.csv | python3 src/mapper_task3.py | sort | python3 src/reducer_sum.py
+APARTMENT	3
+BAR OR TAVERN	1
+COMMERCIAL	3
+CTA BUS	1
+CTA PLATFORM	1
+HOTEL	1
+PARKING LOT	3
+RESIDENCE	7
+RESTAURANT	1
+RETAIL STORE	1
+SIDEWALK	2
+STREET	6
+
 ```
 
 ---
