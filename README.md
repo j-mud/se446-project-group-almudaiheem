@@ -39,7 +39,7 @@ mapred streaming \
 -mapper 'python3 mapper_task2.py' \
 -reducer 'python3 reducer_sum.py' \
 -input /data/chicago_crimes.csv \
--output /user/[your_id]/project/m1/task2
+-output /user/lalsubaie/project/m1/task2
 ```
 
 ### Top 5 Results
@@ -72,7 +72,7 @@ mapred streaming \
 -mapper 'python3 mapper_task3.py' \
 -reducer 'python3 reducer_sum.py' \
 -input /data/chicago_crimes.csv \
--output /user/[your_id]/project/m1/task3
+-output /user/jalhozami/project/m1/task3
 ```
 
 ### Top 5 Results
