@@ -44,15 +44,18 @@ mapred streaming \
 
 ### Top 5 Results
 ```text
-[paste top 5 lines from task 2 output hereeeee]
+THEFT                 142423
+BATTERY               113005
+CRIMINAL DAMAGE        65784
+NARCOTICS              52678
+ASSAULT                37698
 ```
 
 ### Interpretation
-[write one sentence about task 2 results]
+Theft is the most common crime type in Chicago, followed by battery and criminal damage, suggesting that property crimes and violent offenses make up the majority of reported incidents.
 
 ### Execution Logs
 ```text
-[Paste full terminal output for Task 2 here]
 ```
 
 ---
