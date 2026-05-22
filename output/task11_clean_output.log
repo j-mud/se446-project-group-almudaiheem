@@ -1,0 +1,27 @@
+Spark Master: yarn
+Spark Version: 3.5.4
+Original row count: 793073
+Sampled row count for ML: 39534
+Feature vector positions:
+Model: Logistic Regression
+AUC-ROC: 0.620330164552448
+Accuracy: 0.7261081219574687
+F1 Score: 0.6316050325008271
+Precision: 0.696725923672566
+Recall: 0.7261081219574687
+Model: Random Forest
+AUC-ROC: 0.8137701156452186
+Accuracy: 0.8130924929541379
+F1 Score: 0.7771865173014645
+Precision: 0.8502960129925832
+Recall: 0.8130924929541379
+Model: GBT
+AUC-ROC: 0.8287458759997957
+Accuracy: 0.851652574942352
+F1 Score: 0.836329108342923
+Precision: 0.8620549792100882
+Recall: 0.851652574942352
+Model Comparison Table:
+|Model              |AUC_ROC           |Accuracy          |F1_Score          |Precision         |Recall            |Training_Time     |
+|Feature       |Importance          |
+Interpretation:
