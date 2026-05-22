@@ -981,17 +981,7 @@ spark-submit \
   m2_spark_ml.py
 ```
 
-Full spark-submit output:
 
-```text
-Add full spark-submit terminal output here after running Task 11.
-```
-
-YARN logs:
-
-```text
-Add relevant yarn logs here after running Task 11.
-```
 
 ## Member Contributions
 
