@@ -671,3 +671,361 @@ To https://github.com/j-mud/se446-project-group-almudaiheem.git
 | Joud | Implemented mapper_task3.py for location hotspot analysis and contributed Task 3 results. |
 | Fjr Sad | Implemented mapper_task4.py for year trend analysis, tested it locally, ran it on the Hadoop cluster, collected the output and top 5 results, and documented Task 4 in the README. |
 | Layan Alshammari| Implemented mapper_task5.py for arrest rate analysis and contributed Task 5 results. |
+
+
+
+
+# Milestone 2: Chicago Crime Analytics with Spark + MLlib
+
+
+
+
+## Team Members
+
+| Name | Student ID | Assigned Work |
+|---|---:|---|
+| Aljohara Almudaiheem | 231383 | Tasks 1-2: Spark DataFrame and SQL analytics |
+| Laura Alsubaie | 231747 | Tasks 3-4: Crime trend over years and arrest rate analysis |
+| Joud Alhozami | 231682 | Tasks 5-7: ML pipeline, model training, evaluation, and feature importance |
+| Fjr Sad | 231722 | Local and cluster execution evidence |
+| Layan Alshammari | 231822 | Converted the ML code into a standalone spark-submit script and organized the README |
+
+## Executive Summary
+
+In Milestone 2, we upgraded the Chicago crime analysis from MapReduce-based counting to Spark-based analytics and Spark MLlib prediction. The project repeats the main Milestone 1 analysis using Spark DataFrames and Spark SQL, then builds a machine learning pipeline to predict whether a crime will result in an arrest.
+
+The project includes Spark analytics, machine learning model comparison, feature importance analysis, and deployment evidence for local execution and cluster execution.
+
+## Dataset
+
+The local notebook used generated sample data with 10,000 rows. The cluster execution used the HDFS dataset path `hdfs:///data/chicago_crimes.csv` with 793,073 rows.
+
+| Environment | Dataset |
+|---|---|
+| Local execution | Generated sample data with 10,000 rows |
+| Cluster execution | `hdfs:///data/chicago_crimes.csv` |
+
+The main columns used in the ML pipeline are:
+
+| Column | Use |
+|---|---|
+| `Primary Type` / `PrimaryType` | Crime type feature |
+| `Domestic` / `Domestic_str` | Domestic case feature |
+| `District` | Police district feature |
+| `Date` / `Hour` | Used to represent the hour of the crime |
+| `Arrest` / `label` | Label to predict |
+
+## M1 vs M2 Comparison
+
+| Task | M1 MapReduce Result | M2 Spark Result | Same Result? | Notes |
+|---|---|---|---|---|
+| Task 1: Crime Type Distribution | Crime type counts from MapReduce | Crime type counts repeated using Spark DataFrame | Yes | Spark used `groupBy()` and `count()` instead of mapper/reducer files |
+| Task 2: Location Hotspots | Location counts from MapReduce | Location counts repeated using Spark SQL | Yes | Spark SQL made the query easier to read |
+| Task 3: Crime Trend Over Years | Yearly crime trend from MapReduce | Yearly crime trend repeated using Spark DataFrame and visualization | Yes | M2 added a line chart |
+| Task 4: Arrest Rate Analysis | Arrest rate analysis from MapReduce | Overall arrest rate and arrest rate by crime type using Spark DataFrame | Yes | M2 added a clearer per-crime-type arrest rate breakdown |
+
+Overall, Spark made the analysis cleaner and easier to write compared to MapReduce. Instead of writing separate mapper and reducer files, Spark allowed the team to use DataFrames, SQL queries, and built-in MLlib tools.
+
+## Phase A: Spark DataFrame Analytics
+
+### Task 1: Crime Type Distribution
+
+Author: Aljohara Almudaiheem
+
+Task 1 shows the top 10 crime types using Spark DataFrames.
+
+| Crime Type | Count |
+|---|---:|
+| THEFT | 1044 |
+| WEAPONS VIOLATION | 1024 |
+| BURGLARY | 1023 |
+| CRIMINAL DAMAGE | 1016 |
+| PROSTITUTION | 1012 |
+| NARCOTICS | 988 |
+| BATTERY | 987 |
+| ROBBERY | 986 |
+| ASSAULT | 971 |
+| MOTOR VEHICLE THEFT | 949 |
+
+### Task 2: Location Hotspots
+
+Author: Aljohara Almudaiheem
+
+Task 2 shows the top 10 crime locations using Spark SQL.
+
+| Location Description | Count |
+|---|---:|
+| ALLEY | 1038 |
+| RESTAURANT | 1024 |
+| PARKING LOT/GARAGE(NON.RESID.) | 1024 |
+| SMALL RETAIL STORE | 1022 |
+| RESIDENCE | 1015 |
+| APARTMENT | 999 |
+| SCHOOL, PUBLIC, BUILDING | 985 |
+| SIDEWALK | 975 |
+| OTHER | 972 |
+| STREET | 946 |
+
+### Task 3: Crime Trend Over Years
+
+Author: Laura Alsubaie
+
+Task 3 shows the number of crimes per year. The results show that the number of crimes changes over time and is not constant.
+
+| Year | Count |
+|---:|---:|
+| 2001 | 454 |
+| 2002 | 410 |
+| 2003 | 440 |
+| 2004 | 410 |
+| 2005 | 455 |
+| 2006 | 423 |
+| 2007 | 437 |
+| 2008 | 392 |
+| 2009 | 425 |
+| 2010 | 414 |
+| 2011 | 411 |
+| 2012 | 498 |
+| 2013 | 473 |
+| 2014 | 453 |
+| 2015 | 407 |
+| 2016 | 405 |
+| 2017 | 410 |
+| 2018 | 446 |
+| 2019 | 438 |
+| 2020 | 440 |
+
+### Task 4: Arrest Rate Analysis
+
+Author: Laura Alsubaie
+
+The overall arrest rate was:
+
+```text
+0.3459
+```
+
+The arrest rate by crime type was:
+
+| Crime Type | Arrest Rate | Total Crimes |
+|---|---:|---:|
+| NARCOTICS | 0.8583 | 988 |
+| PROSTITUTION | 0.8043 | 1012 |
+| WEAPONS VIOLATION | 0.6357 | 1024 |
+| BATTERY | 0.3465 | 987 |
+| ASSAULT | 0.2585 | 971 |
+| ROBBERY | 0.1623 | 986 |
+| THEFT | 0.1169 | 1044 |
+| BURGLARY | 0.1036 | 1023 |
+| CRIMINAL DAMAGE | 0.0876 | 1016 |
+| MOTOR VEHICLE THEFT | 0.0801 | 949 |
+
+The highest arrest rate was for `NARCOTICS`, while the lowest arrest rate was for `MOTOR VEHICLE THEFT`. This shows that the chance of arrest depends strongly on the crime type.
+
+## Phase B: Spark MLlib Arrest Prediction
+
+The ML pipeline predicts the `Arrest` outcome using Spark MLlib.
+
+### Task 5: Feature Engineering Pipeline
+
+Original ML code by: Joud Alhozami  
+Standalone script conversion by: Layan Alshammari
+
+The feature engineering pipeline uses:
+
+| Step | Description |
+|---|---|
+| `StringIndexer` | Converts crime type into `crime_index` |
+| `StringIndexer` | Converts domestic status into `domestic_index` |
+| `VectorAssembler` | Combines the selected features into one `features` vector |
+| Train/test split | Splits the data into 80% training and 20% testing using `seed=42` |
+
+The feature vector order is:
+
+```text
+[0] District, [1] crime_index, [2] Hour, [3] domestic_index
+```
+
+Example feature rows:
+
+| District | crime_index | Hour | domestic_index | features | label |
+|---:|---:|---:|---:|---|---:|
+| 1 | 4.0 | 23 | 0.0 | [1.0,4.0,23.0,0.0] | 1 |
+| 3 | 9.0 | 18 | 0.0 | [3.0,9.0,18.0,0.0] | 0 |
+| 20 | 9.0 | 0 | 0.0 | [20.0,9.0,0.0,0.0] | 0 |
+| 9 | 3.0 | 0 | 0.0 | [9.0,3.0,0.0,0.0] | 0 |
+| 5 | 8.0 | 6 | 0.0 | [5.0,8.0,6.0,0.0] | 1 |
+
+### Task 6: Model Training and Evaluation
+
+Original ML code by: Joud Alhozami  
+Standalone script conversion by: Layan Alshammari
+
+Three models were trained and evaluated:
+
+| Model | Parameters |
+|---|---|
+| Logistic Regression | `maxIter=100`, `regParam=0.01` |
+| Random Forest | `numTrees=100`, `maxDepth=5` |
+| GBT | `maxIter=50`, `maxDepth=5` |
+
+The models were evaluated using AUC-ROC, Accuracy, F1 Score, Precision, Recall, confusion matrix, and training time.
+
+### Model Comparison Table
+
+| Model | AUC-ROC | Accuracy | F1 Score | Precision | Recall | Training Time |
+|---|---:|---:|---:|---:|---:|---:|
+| Logistic Regression | 0.5869 | 0.6677 | 0.5975 | 0.6429 | 0.6677 | 8.64 |
+| Random Forest | 0.8623 | 0.8120 | 0.8099 | 0.8093 | 0.8120 | 11.94 |
+| GBT | 0.8633 | 0.8079 | 0.8057 | 0.8051 | 0.8079 | 36.66 |
+
+The best model based on AUC-ROC was **GBT**, with an AUC-ROC of **0.8633**. However, **Random Forest** had the highest accuracy and F1 score, and it trained faster than GBT. For this project, Random Forest is a strong recommended model because it gives high performance with less training time.
+
+### Confusion Matrices
+
+#### Logistic Regression
+
+| Label | Prediction | Count |
+|---:|---:|---:|
+| 0 | 0.0 | 1198 |
+| 0 | 1.0 | 74 |
+| 1 | 0.0 | 573 |
+| 1 | 1.0 | 102 |
+
+#### Random Forest
+
+| Label | Prediction | Count |
+|---:|---:|---:|
+| 0 | 0.0 | 1118 |
+| 0 | 1.0 | 154 |
+| 1 | 0.0 | 212 |
+| 1 | 1.0 | 463 |
+
+#### GBT
+
+| Label | Prediction | Count |
+|---:|---:|---:|
+| 0 | 0.0 | 1115 |
+| 0 | 1.0 | 157 |
+| 1 | 0.0 | 217 |
+| 1 | 1.0 | 458 |
+
+### Task 7: Feature Importances and Interpretation
+
+Original ML code by: Joud Alhozami  
+Standalone script conversion by: Layan Alshammari
+
+Random Forest feature importance results:
+
+| Feature | Importance |
+|---|---:|
+| crime_index | 0.9327 |
+| domestic_index | 0.0486 |
+| Hour | 0.0117 |
+| District | 0.0070 |
+
+The most important feature was `crime_index`, which means the crime type had the strongest effect on predicting whether an arrest would happen. This matches the arrest rate analysis because different crime types had very different arrest rates.
+
+Logistic Regression performed worse because it works better with simpler linear relationships. Random Forest and GBT performed better because they can capture more complex patterns between crime type, district, hour, domestic status, and arrest outcome.
+
+## Phase C: Deployment Evidence
+
+### Local Execution
+
+Author: Fjr Sad
+
+| Item | Evidence |
+|---|---|
+| Spark Master | `local[*]` |
+| Spark Version | `4.0.2` |
+| Dataset Rows | `10000` |
+
+### Cluster Client Mode
+
+Author: Fjr Sad
+
+| Item | Evidence |
+|---|---|
+| Spark Master | `yarn` |
+| Spark Version | `3.5.4` |
+| Dataset Path | `hdfs:///data/chicago_crimes.csv` |
+| Dataset Rows | `793073` |
+| Command Used | `spark-submit --master yarn --deploy-mode client task10_client_mode.py 2>&1 \| tee task10_client_mode.log` |
+| Evidence File | `task10_client_mode.log` |
+
+The output confirms that the application ran on the cluster using Spark Master `yarn` and loaded the dataset from HDFS.
+
+### Spark-submit Cluster Mode
+
+The standalone script is:
+
+```text
+m2_spark_ml.py
+```
+
+This script was created from the ML pipeline section for Tasks 5-7. The original ML code was written by Joud Alhozami, and it was converted and organized as a standalone script by Layan Alshammari.
+
+Command used:
+
+```bash
+spark-submit \
+  --master yarn \
+  --deploy-mode cluster \
+  --driver-memory 512m \
+  --num-executors 1 \
+  --executor-memory 1g \
+  --executor-cores 1 \
+  --conf spark.driver.maxResultSize=128m \
+  --conf spark.yarn.appMasterEnv.PYSPARK_PYTHON=python3.12 \
+  --conf spark.executorEnv.PYSPARK_PYTHON=python3.12 \
+  m2_spark_ml.py
+```
+
+Full spark-submit output:
+
+```text
+Add full spark-submit terminal output here after running Task 11.
+```
+
+YARN logs:
+
+```text
+Add relevant yarn logs here after running Task 11.
+```
+
+## Member Contributions
+
+| Member | Contribution |
+|---|---|
+| Aljohara Almudaiheem | Implemented Tasks 1-2 using Spark DataFrames and Spark SQL |
+| Laura Alsubaie | Implemented Tasks 3-4 for yearly trends and arrest rate analysis |
+| Joud Alhozami | Implemented Tasks 5-7 for the ML pipeline, model training, model evaluation, and feature importance |
+| Fjr Sad | Worked on local execution, cluster client mode, and deployment evidence |
+| Layan Alshammari | Converted the ML pipeline code into the standalone `m2_spark_ml.py` script and organized the README |
+
+## Repository Structure
+
+```text
+se446-project-group-almudaiheem/
+├── output/
+├── scripts/
+├── src/
+├── README.md
+└── m2_spark_ml.py
+```
+
+## Notes
+
+The standalone script uses the HDFS dataset path:
+
+```text
+hdfs:///data/chicago_crimes.csv
+```
+
+For the ML section, the dataset is sampled using:
+
+```python
+df.sample(0.05, seed=42)
+```
+
+This was done so the ML models can run within the cluster memory limit.
